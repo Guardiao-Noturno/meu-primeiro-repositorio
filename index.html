@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite Especial</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Georgia', serif;
+background:linear-gradient(135deg,#2c3e75,#4b6cb7);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+/* ENVELOPE */
+
+#envelope{
+width:280px;
+height:180px;
+background:#fff;
+position:relative;
+border-radius:6px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+
+#tampa{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#f2f2f2;
+clip-path: polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1s;
+}
+
+#envelope:hover #tampa{
+transform:rotateX(180deg);
+}
+
+#textoClique{
+z-index:2;
+}
+
+/* CONVITE */
+
+#convite{
+display:none;
+background:white;
+padding:40px;
+border-radius:20px;
+max-width:420px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+animation:aparecer 1s ease;
+}
+
+@keyframes aparecer{
+
+from{
+opacity:0;
+transform:scale(0.6);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+h1{
+color:#3b5d8a;
+font-size:34px;
+margin:10px 0;
+}
+
+h2{
+font-weight:normal;
+}
+
+.alianca{
+font-size:42px;
+animation:girar 4s linear infinite;
+}
+
+@keyframes girar{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
+}
+
+/* FLORES */
+
+.flor{
+position:absolute;
+font-size:24px;
+animation:cair linear infinite;
+opacity:0.7;
+}
+
+@keyframes cair{
+
+0%{
+transform:translateY(-50px) rotate(0);
+}
+
+100%{
+transform:translateY(100vh) rotate(360deg);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="envelope" onclick="abrir()">
+
+<div id="tampa"></div>
+
+<div id="textoClique">
+Clique para abrir 💌
+</div>
+
+</div>
+
+<div id="convite">
+
+<div class="alianca">💍</div>
+
+<h1>
+Jean Carlos<br>
+&<br>
+Tauane Alves
+</h1>
+
+<p>
+Com muito carinho queremos fazer um convite especial.
+</p>
+
+<h2>
+Vocês aceitam ser nossos padrinho de casamento?
+</h2>
+
+<p>
+Será uma grande alegria ter você ao nosso lado nesse momento tão importante ❤️
+</p>
+
+</div>
+
+<script>
+
+function abrir(){
+
+document.getElementById("envelope").style.display="none";
+document.getElementById("convite").style.display="block";
+
+}
+
+/* flores caindo */
+
+for(let i=0;i<20;i++){
+
+let flor=document.createElement("div");
+
+flor.className="flor";
+flor.innerHTML="🌸";
+
+flor.style.left=Math.random()*100+"%";
+flor.style.animationDuration=(5+Math.random()*6)+"s";
+
+document.body.appendChild(flor);
+
+}
+
+</script>
+
+</body>
+</html>
